@@ -1,0 +1,60 @@
+<html>
+<head>
+    <meta name="description" content="List" />
+    <meta name="keywords" content="lists, prints, Japanese,Ukiyo-e,woodblock" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+    <title>Japanese Print Collection Catalogue</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body>
+<h1>My Japanese Print Collection</h1>
+<nav>
+    <a href="#" id="clear">Clear Stored Data</a>
+    <a href="#" id="displayLink">Display Data</a>
+    <!--<a href="search.html" id="searchLink">Search Data</a>-->
+    <a href="additem.html" id="addNew" style="display: none;">Add New Data</a>
+</nav>
+<form action="#" method="post" id="printForm" > <!--start of the form-->
+    <fieldset id="printFieldset">
+        <legend id="add">Add an Japanese Print:</legend>
+        <span>* fields are required.</span>
+        <ul id="errors"></ul>
+        <ul id="questions">
+            <li id="select"><label for="group">* Select a Japanese Print Artist</label></li>
+        </ul>
+        <h2>Print Info:</h2>
+        <label for="printName">* Print Name:</label><input type="text" name="printName" id="printName" />
+        <br />
+        <label for="approxDateOfPrint">Approximate Date of Printing:</label><input type="range" name="approxDateOfPrint" id="approxDateOfPrint" min="1700" max="2020" steps="10"/>
+        <br />
+        <legend>* School:</legend>
+        <ul id="school">
+            <li><label for = "Kaigetsudō school, from 1700–14">Kaigetsudō school, from 1700–14</label><input type="radio" checked value="Kaigetsudō school, from 1700–14" name="school" id="Kaigetsudō school, from 1700–14" /></li>
+            <li><label for = "Torii school, from 1700">Torii school, from 1700</label><input type="radio" value="Torii school, from 1700" name="school" id="Torii school, from 1700"/></li>
+            <li><label for = "Katsukawa school, from about 1740">Katsukawa school, from about 1740</label><input type="radio" value="Katsukawa school, from about 1740" name="school" id="Katsukawa school, from about 1740" /></li>
+            <li><label for = "Utagawa school, from 1842">Utagawa school, from 1842</label><input type="radio" value="Utagawa school, from 1842" name="school" id="Utagawa school, from 1842" /></li>
+            <li><label for = "Sōsaku hanga movement, from 1904">Sōsaku hanga movement, from 1904</label><input type="radio" value="Sōsaku hanga movement, from 1904" name="school" id="Sōsaku hanga movement, from 1904" /></li>
+            <li><label for = "Shin hanga New Prints movement, from 1915">Shin hanga New Prints movement, from 1915</label><input type="radio" value="Shin hanga New Prints movement, from 1915" name="school" id="Shin hanga New Prints movement, from 1915" /></li>
+
+        </ul>
+        <label for="approxValue">* Approximate Value:</label><input type="text" name="approxValue" id="approxValue" size= "45" height= "6" />
+        <br />
+        <label for="datePrint">* Date Printed:</label><input type="date" id="datePrint" name="datePrint" />
+        <br />
+        <label for="dateAdded">* Date Added:</label><input type="date" name="dateAdded" id="dateAdded" />
+        <br />
+        <label for="recordComplete">* Record Complete?:</label><input type="checkbox" name="recordComplete" id="recordComplete" />
+        <br />
+        <label for="additionalComments">Comments:</label>
+        <textarea rows="4" cols="35" id="additionalComments"></textarea>
+        <br />
+    </fieldset>
+    <input type="submit" id="submit" value="Submit"/>
+</form> <!--end of the form-->
+<br />
+<script src="json.js" type="text/javascript"></script>
+<script src="main.js" type="text/javascript"></script>
+</body>
+</html>

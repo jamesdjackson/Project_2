@@ -1,0 +1,66 @@
+form {
+    background-color: #020205;
+    color: #d8d59f;
+
+}
+
+html {
+    background-color: #020205;
+}
+
+a {
+    color: #1abc9c;
+    text-decoration: underline;
+ }
+
+a:hover {
+    color: #2ecc71;
+    text-decoration: none; }
+
+h1 {
+    font-size: 32px;
+    font-weight: 900;
+    color: #b6eeec;
+    text-align: right;
+}
+
+nav {
+    color: #b6eeec;
+}
+
+h1 {
+    background-image: url('sc170739.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    padding-top: 1.85em;
+}
+
+h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    margin-top: 2px;
+}
+
+
+input[disabled],
+input[readonly],
+textarea[disabled],
+
+textarea[readonly] {
+    background-color: #eaeded;
+    border-color: transparent;
+    color: #cad2d3;
+    cursor: default;
+}
+
+ul {
+    color: #eaeded;
+}
