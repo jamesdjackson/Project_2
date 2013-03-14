@@ -3,6 +3,9 @@
 <!--Project 2-->
 window.addEventListener("DOMContentLoaded", function () {
 
+
+
+
 // getting element by id
     function $(i) {
         var theElement = document.getElementById(i);
@@ -36,6 +39,8 @@ window.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+
+
 // turn links on and off
     function toggleControls(n) {
         switch(n) {
@@ -56,23 +61,34 @@ window.addEventListener("DOMContentLoaded", function () {
                 return false;
         }
     }
+
+    function getCheckboxValue(){
+        if($('recordComplete').checked){
+            recordCompleteValue = $('recordComplete').value;
+        }else{
+            recordCompleteValue = 'No'
+        }
+    }
+
 // function for storing input data from form
     function storeData(key) {
         if(!key) {
-            var id = Math.floor(Math.random() * 1000001);
+            var id = Math.floor(Math.random() * 19760110);
         } else {
             id = key;
         }
         getSelectedRadio();
+        getCheckboxValue();
         var item             = {};
-        item.group       = ["Artist:", $("groups").value];
-        item.printName    = ["Print Name:", $("printName").value];
-        item.approxDateOfPrint    = ["Quantity:", $("approxDateOfPrint").value];
-        item.school     = ["Version:", schoolValue];
-        item.approxValue        = ["Cost:", $("approxValue").value];
-        item.datePrint   = ["Date Printed:", $("datePrint").value];
-        item.dateAdded     = ["Date Acquired:", $("dateAdded").value];
+        item.group = ["Artist:", $("groups").value];
+        item.printName = ["Print Name:", $("printName").value];
+        item.approxDateOfPrint = ["Quantity:", $("approxDateOfPrint").value];
+        item.school = ["Version:", schoolValue];
+        item.approxValue = ["Cost:", $("approxValue").value];
+        item.datePrint = ["Date Printed:", $("datePrint").value];
+        item.dateAdded = ["Date Acquired:", $("dateAdded").value];
         item.additionalComments = ["Comments:", $("additionalComments").value];
+        item.recordComplete = ["Completed Record?", recordCompleteValue];
         localStorage.setItem(id, JSON.stringify(item));
         alert("Japanese print record saved");
     }
@@ -80,29 +96,29 @@ window.addEventListener("DOMContentLoaded", function () {
     function getData() {
         toggleControls("on");
         if (localStorage.length === 0) {
-            alert("There is no data in local storage, so I added some.");
+            alert("I automatigically added some records for you!");
             autoFillData();
         }
         // write data from local storage to the browser
-        var makeDiv  = document.createElement("div");
+        var makeDiv = document.createElement("div");
         makeDiv.setAttribute("id","items");
         var makeList = document.createElement("ul");
         makeDiv.appendChild(makeList);
         document.body.appendChild(makeDiv);
         $("items").style.display = "block";
         for (var i = 0; i < localStorage.length; i++) {
-            var makeli      = document.createElement("li");
-            var linksLi     = document.createElement("li");
+            var makeli = document.createElement("li");
+            var linksLi = document.createElement("li");
             makeList.appendChild(makeli);
-            var key         = localStorage.key(i);
-            var value       = localStorage.getItem(key);
-            var obj         = JSON.parse(value);
+            var key = localStorage.key(i);
+            var value = localStorage.getItem(key);
+            var obj = JSON.parse(value);
             var makeSublist = document.createElement("ul");
             makeli.appendChild(makeSublist);
             for (var n in obj) {
-                var makeSubli       = document.createElement("li");
+                var makeSubli = document.createElement("li");
                 makeSublist.appendChild(makeSubli);
-                var optSubText      = obj[n][0] + " " + obj[n][1];
+                var optSubText = obj[n][0] + " " + obj[n][1];
                 makeSubli.innerHTML = optSubText;
                 makeSublist.appendChild(linksLi);
             }
@@ -147,6 +163,7 @@ window.addEventListener("DOMContentLoaded", function () {
         $("groups").value   = item.group[1];
         $("printName").value = item.printName[1];
         $("approxDateOfPrint").value = item.approxDateOfPrint[1];
+        $("recordComplete").value = item.recordComplete[1];
 
 
         var radios = document.forms[0].school;
@@ -171,6 +188,8 @@ window.addEventListener("DOMContentLoaded", function () {
         $("datePrint").value = item.datePrint[1];
         $("dateAdded").value = item.dateAdded[1];
         $("additionalComments").value = item.additionalComments[1];
+        $("recordComplete").value = item.recordComplete[1];
+
 
         save.removeEventListener("click", storeData);
         // change Submit button value to say edit
@@ -210,6 +229,7 @@ window.addEventListener("DOMContentLoaded", function () {
         var getapproxValue = $("approxValue");
         var getdatePrint = $("datePrint");
         var getdateAdded = $("dateAdded");
+        var recordComplete = $("recordComplete");
 
 
         var messageAry = [];
@@ -243,7 +263,13 @@ window.addEventListener("DOMContentLoaded", function () {
             messageAry.push(dateAddedError);
         }
 
-        if(messageAry.length >= 1) {
+        if (recordComplete.value === "") {
+            var recordCompleteError = "Please check if record complete.";
+            recordCompleteAdded.style.border = "1px solid red";
+            messageAry.push(recordCompleteError);
+        }
+
+        if (messageAry.length >= 1) {
             for(i = 0; i < messageAry.length; i++) {
                 var txt = document.createElement("li");
                 txt.innerHTML = messageAry[i];
@@ -254,20 +280,25 @@ window.addEventListener("DOMContentLoaded", function () {
         } else {
             storeData(this.key);
         }
+
     }
+
+
 
 
 // variable for drop down
     var printGroups = ["--Choose One--", "Hokusai", "Yoshitoshi", "Kuniyoshi"],
-        schoolValue,
+        schoolValue;
+        recordCompleteValue = 'No';
         errMsg = $("errors");
-    createOptions();
+        createOptions();
 
 // set link and submit click events
     var displayLink = $("displayLink");
     displayLink.addEventListener("click", getData);
     var clearLink = $("clear");
     clearLink.addEventListener("click", clearLocal);
+
 //var searchLink = $("searchLink");
 //searchLink.addEventListener("click", getSearch);
     var save = $("submit");
