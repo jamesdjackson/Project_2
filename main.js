@@ -1,10 +1,8 @@
 <!--James Jackson-->
 <!--VFW 1303-->
 <!--Project 2-->
+
 window.addEventListener("DOMContentLoaded", function () {
-
-
-
 
 // getting element by id
     function $(i) {
@@ -99,7 +97,6 @@ window.addEventListener("DOMContentLoaded", function () {
             alert("I automagically added some records for you!");
             autoFillData();
         }
-        // write data from local storage to the browser
         var makeDiv = document.createElement("div");
         makeDiv.setAttribute("id","items");
         var makeList = document.createElement("ul");

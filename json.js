@@ -1,6 +1,7 @@
 <!--James Jackson-->
 <!--VFW 1303-->
 <!--Project 2-->
+
 var json = {
     "printRecord1": {
         "group":       ["Artist:", "Hokusai"],
@@ -10,6 +11,7 @@ var json = {
         "approxValue":        ["Value:", "$1500.00"],
         "datePrint":   ["Date Printed:", "1831"],
         "dateAdded":     ["Date Acquired:", "2012"],
+        "recordComplete":   ["Completed Record?", "Yes"],
         "additionalComments": ["Comments:", "Super Awesome Edo Art"]
     },
     "printRecord2": {
@@ -20,6 +22,7 @@ var json = {
         "approxValue":        ["Value:", "$1200.00"],
         "datePrint":   ["Date Printed:", "1885"],
         "dateAdded":     ["Date Acquired:", "2010"],
+        "recordComplete":   ["Completed Record?", "Yes"],
         "additionalComments": ["Comments:", "Super Duper Awesome Edo Art"]
     },
     "printRecord3": {
@@ -30,6 +33,7 @@ var json = {
         "approxValue":        ["Value:", "$1400.00"],
         "datePrint":   ["Date Printed:", "1844"],
         "dateAdded":     ["Date Acquired:", "2012"],
+        "recordComplete":   ["Completed Record?", "Yes"],
         "additionalComments": ["Comments:", "Way Super Duper Awesome Edo Art"]
     }
 }
