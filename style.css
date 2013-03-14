@@ -1,12 +1,14 @@
+/*<!--James Jackson-->
+<!--VFW 1303-->
+<!--Project 2-->*/
+html {
+    background-color: #020205;
+}
 
 form {
     background-color: #020205;
     color: #d8d59f;
 
-}
-
-html {
-    background-color: #020205;
 }
 
 a {
@@ -75,7 +77,11 @@ ul {
     color: #eaeded;
 }
 
-
+div {
+    color: #cad2d3;
+    cursor: default;
+    font-size: 28;
+}
 .switch {
 
     height: 28px;

@@ -1,3 +1,6 @@
+<!--James Jackson-->
+<!--VFW 1303-->
+<!--Project 2-->
 window.addEventListener("DOMContentLoaded", function () {
 
 // getting element by id

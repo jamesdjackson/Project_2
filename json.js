@@ -1,3 +1,6 @@
+<!--James Jackson-->
+<!--VFW 1303-->
+<!--Project 2-->
 var json = {
     "printRecord1": {
         "group":       ["Artist:", "Hokusai"],
