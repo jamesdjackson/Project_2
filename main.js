@@ -6,18 +6,18 @@ window.addEventListener("DOMContentLoaded", function () {
         return theElement;
     }
 
-// create select field element and populate it with options on the fly
-    function makeCats() {
-        var formTag = document.getElementsByTagName("form");    // formTag is an array of all the form tags
-        makeSelect = document.createElement("select");		// this creates the select tag
-        var	selectLi = $("select");								// setting that select tag
-        makeSelect.setAttribute("id", "groups");			// creating the select tag and giving it an id of groups
-        for (var i = 0; i < printGroups.length; i++) {			// looping through the printGroups array by length
-            var makeOption = document.createElement("option");  // setting the option tag
-            var optText = printGroups[i];							// setting the elements in printGroups array to i
-            makeOption.setAttribute("value", optText);  		// creating the option tag and giving it a value of optText
-            makeOption.innerHTML = optText;						// creating the option tag and setting the form input to optText
-            makeSelect.appendChild(makeOption);					// creating a select tag and appending the option tag to it
+
+    function createOptions() {
+        var formTag = document.getElementsByTagName("form");
+        makeSelect = document.createElement("select");
+        var	selectLi = $("select");
+        makeSelect.setAttribute("id", "groups");
+        for (var i = 0; i < printGroups.length; i++) {
+            var makeOption = document.createElement("option");
+            var optText = printGroups[i];
+            makeOption.setAttribute("value", optText);
+            makeOption.innerHTML = optText;
+            makeSelect.appendChild(makeOption);
         }
         selectLi.appendChild(makeSelect);
     }
@@ -103,7 +103,7 @@ window.addEventListener("DOMContentLoaded", function () {
                 makeSubli.innerHTML = optSubText;
                 makeSublist.appendChild(linksLi);
             }
-            makeItemLinks(localStorage.key(i), linksLi); // create our edit and delete buttons
+            makeItemLinks(localStorage.key(i), linksLi);
         }
     }
 
@@ -258,7 +258,7 @@ window.addEventListener("DOMContentLoaded", function () {
     var printGroups = ["--Choose One--", "Hokusai", "Yoshitoshi", "Kuniyoshi"],
         schoolValue,
         errMsg = $("errors");
-    makeCats();
+    createOptions();
 
 // set link and submit click events
     var displayLink = $("displayLink");
