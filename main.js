@@ -63,8 +63,8 @@ window.addEventListener("DOMContentLoaded", function () {
     }
 
     function getCheckboxValue(){
-        if($('recordComplete').checked){
-            recordCompleteValue = $('recordComplete').value;
+        if($('recordComplete').checked) {
+            recordCompleteValue = 'Yes';
         }else{
             recordCompleteValue = 'No'
         }
@@ -82,7 +82,7 @@ window.addEventListener("DOMContentLoaded", function () {
         var item             = {};
         item.group = ["Artist:", $("groups").value];
         item.printName = ["Print Name:", $("printName").value];
-        item.approxDateOfPrint = ["Quantity:", $("approxDateOfPrint").value];
+        item.approxDateOfPrint = ["Approximate Date:", $("approxDateOfPrint").value];
         item.school = ["Version:", schoolValue];
         item.approxValue = ["Cost:", $("approxValue").value];
         item.datePrint = ["Date Printed:", $("datePrint").value];
@@ -163,7 +163,7 @@ window.addEventListener("DOMContentLoaded", function () {
         $("groups").value   = item.group[1];
         $("printName").value = item.printName[1];
         $("approxDateOfPrint").value = item.approxDateOfPrint[1];
-        $("recordComplete").value = item.recordComplete[1];
+        $("recordCompleteValue").value = item.recordComplete[1];
 
 
         var radios = document.forms[0].school;
@@ -188,7 +188,7 @@ window.addEventListener("DOMContentLoaded", function () {
         $("datePrint").value = item.datePrint[1];
         $("dateAdded").value = item.dateAdded[1];
         $("additionalComments").value = item.additionalComments[1];
-        $("recordComplete").value = item.recordComplete[1];
+
 
 
         save.removeEventListener("click", storeData);
