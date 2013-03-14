@@ -96,7 +96,7 @@ window.addEventListener("DOMContentLoaded", function () {
     function getData() {
         toggleControls("on");
         if (localStorage.length === 0) {
-            alert("I automatigically added some records for you!");
+            alert("I automagically added some records for you!");
             autoFillData();
         }
         // write data from local storage to the browser
