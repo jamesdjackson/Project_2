@@ -28,7 +28,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
 
 // find value of selected radio button
-    function getSelectedRadio() {
+    function retrieveRadioValue() {
         var radios = document.forms[0].school;
         for (var i=0; i < radios.length; i++){
             if (radios[i].checked) {
@@ -40,7 +40,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
 
 // turn links on and off
-    function toggleControls(n) {
+    function switchControls(n) {
         switch(n) {
             case "on":
                 $("printForm").style.display = "none";
@@ -60,7 +60,7 @@ window.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    function getCheckboxValue(){
+    function retrieveCheckbox(){
         if($('recordComplete').checked) {
             recordCompleteValue = 'Yes';
         }else{
@@ -75,8 +75,8 @@ window.addEventListener("DOMContentLoaded", function () {
         } else {
             id = key;
         }
-        getSelectedRadio();
-        getCheckboxValue();
+        retrieveRadioValue();
+        retrieveCheckbox();
         var item             = {};
         item.group = ["Artist:", $("groups").value];
         item.printName = ["Print Name:", $("printName").value];
@@ -91,11 +91,11 @@ window.addEventListener("DOMContentLoaded", function () {
         alert("Japanese print record saved");
     }
 
-    function getData() {
-        toggleControls("on");
+    function retireveRecords() {
+        switchControls("on");
         if (localStorage.length === 0) {
             alert("I automagically added some records for you!");
-            autoFillData();
+            automagicRecords();
         }
         var makeDiv = document.createElement("div");
         makeDiv.setAttribute("id","items");
@@ -119,22 +119,22 @@ window.addEventListener("DOMContentLoaded", function () {
                 makeSubli.innerHTML = optSubText;
                 makeSublist.appendChild(linksLi);
             }
-            makeItemLinks(localStorage.key(i), linksLi);
+            linkTogether(localStorage.key(i), linksLi);
         }
     }
 
-    function autoFillData () {
+    function automagicRecords () {
         for(var n in json) {
             var id = Math.floor(Math.random() * 19760110);
             localStorage.setItem(id, JSON.stringify(json[n]));	}
     }
 
-    function makeItemLinks(key, linksLi) {
+    function linkTogether(key, linksLi) {
         var editLink       = document.createElement("a");
         editLink.href      = "#";
         editLink.key       = key;
         var editText       = "Edit Print Record";
-        editLink.addEventListener("click", editItem);
+        editLink.addEventListener("click", editPrintRecords);
         editLink.innerHTML = editText;
         linksLi.appendChild(editLink);
 
@@ -145,17 +145,17 @@ window.addEventListener("DOMContentLoaded", function () {
         deleteLink.href      = "#";
         deleteLink.key       = key;
         var deleteText       = "Delete Print Record";
-        deleteLink.addEventListener("click", deleteItem);
+        deleteLink.addEventListener("click", deletePrintRecords);
         deleteLink.innerHTML = deleteText;
         linksLi.appendChild(deleteLink);
     }
 
 
-    function editItem() {
+    function editPrintRecords() {
         var value = localStorage.getItem(this.key);
         var item = JSON.parse(value);
 
-        toggleControls("off"); // show the form
+        switchControls("off"); // show the form
 
         $("groups").value   = item.group[1];
         $("printName").value = item.printName[1];
@@ -193,11 +193,11 @@ window.addEventListener("DOMContentLoaded", function () {
         $("submit").value = "Edit Contact";
         var editSubmit = $("submit");
         // save the key value established in this function as a property
-        editSubmit.addEventListener("click", validate);
+        editSubmit.addEventListener("click", validateInput);
         editSubmit.key = this.key;
     }
 
-    function deleteItem () {
+    function deletePrintRecords () {
         var ask = confirm("This is about to delete this entry?");
         if (ask) {
             localStorage.removeItem(this.key);
@@ -209,7 +209,7 @@ window.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    function clearLocal() {
+    function clearLocalStorage() {
         if(localStorage.length === 0) {
             alert("There is no data to clear.")
         } else {
@@ -220,7 +220,7 @@ window.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    function validate(e) {
+    function validateInput(e) {
         var getGroup = $("groups");
         var getprintName = $("printName");
         var getapproxValue = $("approxValue");
@@ -292,13 +292,13 @@ window.addEventListener("DOMContentLoaded", function () {
 
 // set link and submit click events
     var displayLink = $("displayLink");
-    displayLink.addEventListener("click", getData);
+    displayLink.addEventListener("click", retireveRecords);
     var clearLink = $("clear");
-    clearLink.addEventListener("click", clearLocal);
+    clearLink.addEventListener("click", clearLocalStorage);
 
 //var searchLink = $("searchLink");
 //searchLink.addEventListener("click", getSearch);
     var save = $("submit");
-    save.addEventListener("click", validate);
+    save.addEventListener("click", validateInput);
 
 });
